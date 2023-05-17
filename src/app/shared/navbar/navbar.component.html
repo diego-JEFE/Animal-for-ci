@@ -1,0 +1,12 @@
+<nav class="h-full">
+    <ul class="h-full flex gap-10 items-center">
+        <li 
+            *ngFor="let item of items"
+            [routerLink]="item.link" 
+            class="text-white cursor-pointer hover:text-zinc-200"
+            routerLinkActive="font-semibold"
+        >
+            {{ item.name }} 
+        </li>
+    </ul>
+</nav>

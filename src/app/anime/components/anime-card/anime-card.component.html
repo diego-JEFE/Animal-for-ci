@@ -1,0 +1,22 @@
+<div 
+    class="bg-zinc-800 mb-10 w-40 md:w-52 cursor-pointer rounded-lg transition-all hover:scale-105 flex flex-col md:gap-4"
+>
+    <shared-lazy-image 
+        [width]="208" 
+        [alt]="'logo'" 
+        [url]="item.images['jpg'].image_url"
+    ></shared-lazy-image> 
+    <div class="p-2">
+        <h2 class="w-full font-semibold text-white">{{ item.title }}</h2>
+        <p 
+            *ngIf="item.episodes"
+            class="text-white"
+        >
+            Eps: {{ item.episodes }} 
+        </p>
+        <p class="text-red-500">
+            {{ item.type }}
+        </p>
+    </div>
+
+</div>

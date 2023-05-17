@@ -1,0 +1,15 @@
+<img 
+    *ngIf="isLoading"
+    src="assets/logo.png"
+    [width]="width" 
+    alt="lazyImage"
+/>
+<img 
+    #img
+    class="rounded-t-lg" 
+    [width]="width" 
+    [src]="url" 
+    [alt]="alt"
+    (load)="onLoaded()"
+    [ngStyle]="{ display: isLoading ? 'none': ''}"
+/>

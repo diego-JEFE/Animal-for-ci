@@ -1,0 +1,15 @@
+<div class="bg-zinc-900">
+    <shared-header></shared-header>
+    <main class="flex">
+        <shared-menu></shared-menu>
+        <anime-list [animeList]="animeList" ></anime-list> 
+    </main>
+    <footer class="w-full p-10 flex flex-col items-center gap-5 ">
+        <shared-pagination 
+            (changedPage)="onChangePageEmmiter($event)"
+            [currentPage]="currentPage" 
+            [totalPages]="totalPages"
+        ></shared-pagination>
+        <span class="text-white">  Diego Polo R. &copy;2023 </span>
+    </footer>
+</div>

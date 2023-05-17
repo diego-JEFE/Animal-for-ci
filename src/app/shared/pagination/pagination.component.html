@@ -1,0 +1,17 @@
+<div class="flex text-white">
+    <button (click)="onFirstPage()">
+        <img width="20" src="assets/doubleArrowLeft.svg" alt="doubleArrowLeft">
+    </button>
+    <button (click)="onPreviusPage()">
+        <img width="20" src="assets/arrowLeft.svg" alt="arrowLeft">
+    </button>
+    
+    <span>{{ currentPage }} / {{ totalPages }}</span>
+
+    <button (click)="onNextPage()">
+        <img width="20" src="assets/arrowRight.svg" alt="arrowRight">
+    </button>
+    <button (click)="onLastPage()">
+        <img width="20" src="assets/doubleArrowRight.svg" alt="doubleArrowRight">
+    </button>
+</div>
