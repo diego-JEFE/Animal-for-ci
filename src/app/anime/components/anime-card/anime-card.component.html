@@ -4,10 +4,10 @@
     <shared-lazy-image 
         [width]="208" 
         [alt]="'logo'" 
-        [url]="item.images['jpg'].image_url"
+        [url]="item.images['jpg'].large_image_url"
     ></shared-lazy-image> 
     <div class="p-2">
-        <h2 class="w-full font-semibold text-white">{{ item.title }}</h2>
+        <h2 class="truncate w-full font-semibold text-white">{{ item.title }}</h2>
         <p 
             *ngIf="item.episodes"
             class="text-white"

@@ -11,11 +11,13 @@ export class PaginationComponent {
   @Output() changedPage = new EventEmitter<number>()
 
   onNextPage(){
+    if(this.currentPage == this.totalPages ) return
     this.currentPage += 1
     this.changedPage.emit(this.currentPage)
   }
 
   onPreviusPage(){
+    if(this.currentPage == 1 ) return
     this.currentPage -= 1
     this.changedPage.emit(this.currentPage)
   }

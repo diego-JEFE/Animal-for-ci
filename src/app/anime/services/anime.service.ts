@@ -1,7 +1,8 @@
 import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { ResponseAnime } from "../interfaces/anime.interfaces";
-import { catchError, of } from 'rxjs'
+import { ResposeGenres } from "../interfaces/genres.interfaces";
+import { ItemMenu } from "../interfaces/item-menu.interfaces";
 
 @Injectable({
     providedIn: 'root'
@@ -16,7 +17,16 @@ export class AnimeService {
         return this.http.get<ResponseAnime>(`${this.uriBase}/anime`)
     }
 
-    getHttpAnimePerPage(page: number){
-        return this.http.get<ResponseAnime>(`${this.uriBase}/anime?page=${page}`)
+    getHttpAnimePerPage(page: number, name?: string, type?: string){
+        return this.http.get<ResponseAnime>(`${this.uriBase}/anime?page=${page}&q=${name || ''}&type=${type || ''}`)
     }
+
+    getHttpAnimePerName(name: string){
+        return this.http.get<ResponseAnime>(`${this.uriBase}/anime?q=${name}`)
+    }
+
+    getHttpAnimePerType(type: string, name?: string){
+        return this.http.get<ResponseAnime>(`${this.uriBase}/anime?type=${type}&q=${name || ''}`)
+    }
+
 }

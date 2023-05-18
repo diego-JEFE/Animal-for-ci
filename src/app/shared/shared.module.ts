@@ -6,6 +6,8 @@ import { RouterModule } from '@angular/router';
 import { LazyImageComponent } from './lazy-image/lazy-image.component';
 import { PaginationComponent } from './pagination/pagination.component';
 import { MenuComponent } from './menu/menu.component';
+import { SearchboxComponent } from './searchbox/searchbox.component';
+import { MenuItemComponent } from './menu/components/menu-item/menu-item.component';
 
 @NgModule({
   declarations: [
@@ -13,7 +15,9 @@ import { MenuComponent } from './menu/menu.component';
     HeaderComponent,
     LazyImageComponent,
     PaginationComponent,
-    MenuComponent
+    MenuComponent,
+    SearchboxComponent,
+    MenuItemComponent
   ],
   imports: [
     CommonModule,

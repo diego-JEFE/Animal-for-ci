@@ -1,6 +1,25 @@
-<div class="mx-3  md:mx-20 my-10 flex justify-between flex-wrap" >
-        <anime-card 
+<div class="mx-3 w-full md:mx-20 my-10 " >
+    <h2 *ngIf="filter" class="my-5 text-xl text-white font-semibold flex justify-between ">
+        {{ nameFilter }}: {{ filter }}
+        <button *ngIf="buttonCancel" (click)="onCancelFilter()" class="p-2 bg-zinc-700 rounded-md" >
+            <img width="20" src="assets/close.svg" alt="closeIcon" />
+        </button>
+    </h2>
+    <div class="flex justify-between flex-wrap">
+        <div 
+            *ngIf="animeList.length < 1; else animes" 
+            class="flex justify-center items-center w-full "
+        >
+            <h2 class="rounded-lg w-1/2 text-md text-center font-semibold text-white p-5 bg-zinc-700">
+                No hay elementos para mostrar
+            </h2>
+        </div> 
+        <ng-template #animes>
+            <anime-card 
+            #cardList
             *ngFor="let item of animeList"
             [item]="item"
-        ></anime-card>
+            ></anime-card>
+        </ng-template>
+    </div>
 </div>

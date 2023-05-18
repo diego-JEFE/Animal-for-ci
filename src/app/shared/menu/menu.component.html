@@ -1,4 +1,29 @@
-<aside class="w-1/4 z-50 h-screen fixed bg-zinc-700">
-
-    
-</aside>
+<div [ngClass]="{'h-screen fixed bg-blackTrans w-full': isVisible}">
+    <button 
+        *ngIf="!isVisible" 
+        class="fixed bg-zinc-500 p-2 rounded-r-md z-50" 
+        (click)="onChangeVisibility()"
+    >
+        <img width="20" src="assets/menu.svg" alt="menuIcon">
+    </button>
+    <aside 
+        class="flex flex-col gap-4 text-white w-full md:w-1/4 z-50 h-screen fixed bg-zinc-700 p-2 drop-shadow-md animate__animated"
+        [ngClass]="{
+            'animate__fadeInLeft': isVisible,
+            'animate__fadeOutLeft': !isVisible
+        }"    
+    >
+        <button (click)="onChangeVisibility()">
+            <img width="25" src="assets/close.svg" alt="closeIcon">
+        </button>
+        <shared-searchbox 
+            (onValue)="onValueSearch($event)" 
+            [placeholder]="searchPlaceholder"
+        ></shared-searchbox>
+        <menu-item 
+            *ngFor="let item of itemMenu" 
+            [item]="item"
+            (onClick)="onChangeVisibility()"
+        ></menu-item>
+    </aside>
+</div>

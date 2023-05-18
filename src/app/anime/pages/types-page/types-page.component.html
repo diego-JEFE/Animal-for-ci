@@ -1,1 +1,27 @@
-<p>types-page works!</p>
+<div>
+    <shared-header></shared-header>
+    <main>
+        <shared-menu
+            [searchPlaceholder]="'Search in ' + type"
+            [itemMenu]="itemsMenu"
+            (onSearch)="onSearchAnime($event)"
+        ></shared-menu>
+        <anime-list
+            class="flex w-full"
+            [nameFilter]="'Type'"
+            [filter]="type" 
+            [animeList]="animeList"
+            [buttonCancel]="cancelFilter"
+            (cancelFilter)="onCancelSearch()"
+        ></anime-list>
+    </main>
+    <footer class="w-full p-10 flex flex-col items-center gap-5 ">
+        <shared-pagination
+            (changedPage)="onChangePageEmmiter($event)"
+            [currentPage]="currentPage" 
+            [totalPages]="totalPages"
+        ></shared-pagination>
+    </footer>
+
+</div>
+

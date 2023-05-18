@@ -1,10 +1,21 @@
-<div class="bg-zinc-900">
+<div class="bg-zinc-900 transition-all">
     <shared-header></shared-header>
-    <main class="flex">
-        <shared-menu></shared-menu>
-        <anime-list [animeList]="animeList" ></anime-list> 
+    <main >
+        <shared-menu
+            [searchPlaceholder]="'Search Anime'"
+            [itemMenu]="itemMenu" 
+            (onSearch)="onSearchAnime($event)"
+        ></shared-menu>
+        <anime-list
+            class="flex w-full" 
+            nameFilter="Searched"
+            [filter]="nameSearch"
+            [animeList]="animeList"
+            [buttonCancel]="true"
+            (cancelFilter)="onCancelSearch()"    
+        ></anime-list> 
     </main>
-    <footer class="w-full p-10 flex flex-col items-center gap-5 ">
+    <footer class="w-full p-10 flex flex-col items-center gap-5">
         <shared-pagination 
             (changedPage)="onChangePageEmmiter($event)"
             [currentPage]="currentPage" 

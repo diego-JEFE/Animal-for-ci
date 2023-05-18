@@ -1,0 +1,16 @@
+<div class="bg-zinc-500 flex gap-2 items-center justify-between rounded-sm drop-shadow-md">
+    <div class="flex">
+        <img class="mx-2" width="25" src="assets/search.svg" alt="">
+        <input 
+            class="p-1 bg-zinc-500 focus:outline-none text-white rounded-sm" 
+            (keyup.enter)="valueEmmiter(searhBox.value)"
+            type="text" 
+            [value]="searhBox.value"
+            [placeholder]="placeholder" 
+            #searhBox 
+        />
+    </div>
+    <div class="bg-zinc-800 font-20 h-1/2 rounded-md px-2 text-sm mx-2">
+        <span>Enter</span>
+    </div>
+</div>

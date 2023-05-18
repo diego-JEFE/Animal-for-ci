@@ -1,0 +1,8 @@
+<div 
+    (click)="click()"
+    class="font-semibold cursor-pointer hover:bg-zinc-800 hover:drop-shadow-md p-2" 
+    [routerLink]="item.path"
+    routerLinkActive="bg-zinc-800 drop-shadow-md"
+> 
+    {{ item.name | uppercase }}
+</div>
