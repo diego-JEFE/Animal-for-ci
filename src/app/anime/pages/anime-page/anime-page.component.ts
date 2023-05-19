@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AnimeService } from '../../services/anime.service';
 import { ActivatedRoute } from '@angular/router';
 import { switchMap } from 'rxjs';
-import { Anime } from '../../interfaces/anime.interfaces';
+import { Data } from '../../../shared/interfaces/global.interfaces';
 
 @Component({
   selector: 'app-anime-page',
@@ -12,7 +12,7 @@ import { Anime } from '../../interfaces/anime.interfaces';
 })
 export class AnimePageComponent implements OnInit{
 
-  public anime!: Anime
+  public anime!: Data
   constructor(
     private activatedRoute: ActivatedRoute,
     private animeService:AnimeService

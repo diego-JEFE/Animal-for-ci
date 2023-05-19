@@ -1,13 +1,13 @@
-export interface ResponseAnime {
+export interface ResponseData {
     pagination: Pagination;
-    data:       Anime[];
+    data:       Data[];
 }
 
-export interface ResponseAnimeById {
-    data:       Anime;
+export interface ResponseDataById {
+    data:       Data;
 }
 
-export interface Anime {
+export interface Data {
     mal_id:          number;
     url:             string;
     images:          { [key: string]: Image };

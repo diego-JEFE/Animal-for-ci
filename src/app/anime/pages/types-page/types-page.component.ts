@@ -1,20 +1,12 @@
-import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { Component, OnInit } from '@angular/core';
 import { switchMap ,} from 'rxjs';
 
-import { Anime, ResponseAnime } from '../../interfaces/anime.interfaces';
+import { Data, ResponseData } from '../../../shared/interfaces/global.interfaces';
+import { ItemMenu } from '../../../shared/interfaces/item-menu.interfaces';
 
+import { menuItems } from '../../config/menuItems';
 import { AnimeService } from '../../services/anime.service';
-import { menuItems } from '../../mocks/menuItems';
-import { ItemMenu } from '../../interfaces/item-menu.interfaces';
-
-
-interface animeStorage {
-  currentPage: number;
-  nameSearch: string | undefined;
-  type: string;
-}
-
 
 @Component({
   selector: 'anime-types-page',
@@ -25,7 +17,7 @@ export class TypesPageComponent implements OnInit {
     
   public type!: string
   public nameSearch: string | undefined
-  public animeList: Anime[] = []
+  public animeList: Data[] = []
   public cancelFilter: boolean = false
   public currentPage = 0
   public totalPages = 0 
@@ -37,9 +29,6 @@ export class TypesPageComponent implements OnInit {
   ){}
 
   ngOnInit(): void {
-
-    const storage = localStorage.getItem('anime') && JSON.parse(localStorage.getItem('anime')!)
-    console.log(storage)
     this.getAnimesPerType()
   }
 
@@ -59,23 +48,14 @@ export class TypesPageComponent implements OnInit {
           pagination.last_visible_page,
           data[0].type
         )
-
       })
   }
 
-  updateAnimeInfo(animeList: Anime[], currentPage: number, totalPages: number, type?: string){
+  updateAnimeInfo(animeList: Data[], currentPage: number, totalPages: number, type?: string){
     this.animeList = animeList
     this.currentPage = currentPage
     this.totalPages = totalPages
     this.type = type || this.type
-
-    const animeStorage: animeStorage = {
-      currentPage: this.currentPage,
-      nameSearch: this.nameSearch,
-      type: this.type
-    }
-
-    localStorage.setItem('anime', JSON.stringify(animeStorage))
   }
 
   onSearchAnime(name: string){
@@ -83,7 +63,7 @@ export class TypesPageComponent implements OnInit {
     this.nameSearch = name
     this.animeService
       .getHttpAnimePerType(this.type, this.nameSearch)
-      .subscribe(({ data, pagination }: ResponseAnime) =>{
+      .subscribe(({ data, pagination }: ResponseData) =>{
         this.updateAnimeInfo(
           data,
           pagination.current_page,

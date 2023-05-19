@@ -1,4 +1,4 @@
-import { ResponseAnime } from "../interfaces/anime.interfaces";
+import { ResponseAnime } from "../../shared/interfaces/global.interfaces";
 
 export const animes : ResponseAnime = {
     "pagination": {

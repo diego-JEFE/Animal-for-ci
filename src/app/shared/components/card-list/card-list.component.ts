@@ -1,5 +1,6 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { Anime } from '../../anime/interfaces/anime.interfaces';
+import { Data } from '../../interfaces/global.interfaces';
+
 
 @Component({
   selector: 'card-list',
@@ -10,7 +11,7 @@ import { Anime } from '../../anime/interfaces/anime.interfaces';
 export class CardListComponent {
   @Input() filter : string | undefined
   @Input() nameFilter : string | undefined
-  @Input() cardList: Anime[] = []
+  @Input() cardList: Data[] = []
   @Input() buttonCancel: boolean = false
 
   @Output() cancelFilter = new EventEmitter<boolean>()

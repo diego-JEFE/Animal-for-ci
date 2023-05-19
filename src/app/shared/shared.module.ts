@@ -1,15 +1,21 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { NavbarComponent } from './navbar/navbar.component';
-import { HeaderComponent } from './header/header.component';
 import { RouterModule } from '@angular/router';
-import { LazyImageComponent } from './lazy-image/lazy-image.component';
-import { PaginationComponent } from './pagination/pagination.component';
-import { MenuComponent } from './menu/menu.component';
-import { SearchboxComponent } from './searchbox/searchbox.component';
-import { MenuItemComponent } from './menu/components/menu-item/menu-item.component';
-import { CardListComponent } from './card-list/card-list.component';
-import { CardItemComponent } from './card-item/card-item.component';
+
+import { 
+  NavbarComponent, 
+  HeaderComponent,
+  LazyImageComponent,
+  PaginationComponent,
+  MenuComponent,
+  SearchboxComponent, 
+  MenuItemComponent ,
+  CardListComponent ,
+  CardItemComponent ,
+  StatusTagComponent ,
+  AsignTagComponent, 
+  GenreListTagComponent,
+} from './components'
 
 @NgModule({
   declarations: [
@@ -21,7 +27,10 @@ import { CardItemComponent } from './card-item/card-item.component';
     SearchboxComponent,
     MenuItemComponent,
     CardListComponent,
-    CardItemComponent
+    CardItemComponent,
+    StatusTagComponent,
+    AsignTagComponent,
+    GenreListTagComponent
   ],
   imports: [
     CommonModule,
@@ -32,7 +41,10 @@ import { CardItemComponent } from './card-item/card-item.component';
     LazyImageComponent,
     PaginationComponent,
     MenuComponent,
-    CardListComponent
+    CardListComponent,
+    StatusTagComponent,
+    AsignTagComponent,
+    GenreListTagComponent
   ]
 })
 export class SharedModule { }

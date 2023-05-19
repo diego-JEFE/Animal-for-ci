@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { ItemMenu } from 'src/app/anime/interfaces/item-menu.interfaces';
+import { ItemMenu } from 'src/app/shared/interfaces/item-menu.interfaces';
 
 @Component({
   selector: 'shared-menu',

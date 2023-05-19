@@ -1,17 +1,16 @@
 import { Component, OnInit } from '@angular/core';
 import { AnimeService } from '../../services/anime.service';
-import { Anime, ResponseAnime } from '../../interfaces/anime.interfaces';
-import { Genres } from '../../interfaces/genres.interfaces';
-import { ItemMenu } from '../../interfaces/item-menu.interfaces';
-import { menuItems } from '../../mocks/menuItems';
+import { Data, Genre, ResponseData } from '../../../shared/interfaces/global.interfaces';
+import { ItemMenu } from '../../../shared/interfaces/item-menu.interfaces';
+import { menuItems } from '../../config/menuItems';
 
 @Component({
   selector: 'anime-main-page',
   templateUrl: './main-page.component.html',
 })
 export class MainPageComponent implements OnInit {
-  public animeList: Anime[] = []
-  public genres : Genres[] = [] 
+  public animeList: Data[] = []
+  public genres : Genre[] = [] 
   public nameSearch: string | undefined
   public currentPage = 0
   public totalPages = 0
@@ -29,7 +28,7 @@ export class MainPageComponent implements OnInit {
   getAllAnimes(){
     this.animeService
     .getHttpAllAnime()
-    .subscribe(({ data, pagination }: ResponseAnime) =>{
+    .subscribe(({ data, pagination }: ResponseData) =>{
       this.updateAnimeInfo(
         data,
         pagination.current_page,
@@ -38,7 +37,7 @@ export class MainPageComponent implements OnInit {
     })
   }
   
-  updateAnimeInfo(animeList: Anime[], currentPage: number, totalPages: number){
+  updateAnimeInfo(animeList: Data[], currentPage: number, totalPages: number){
     this.animeList = animeList
     this.currentPage = currentPage
     this.totalPages = totalPages
@@ -49,7 +48,7 @@ export class MainPageComponent implements OnInit {
     this.nameSearch = name
     this.animeService
       .getHttpAnimePerName(this.nameSearch)
-      .subscribe(({  data, pagination }: ResponseAnime) =>{
+      .subscribe(({  data, pagination }: ResponseData) =>{
         this.updateAnimeInfo(
           data,
           pagination.current_page,

@@ -1,6 +1,9 @@
 import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
-import { ResponseAnime, ResponseAnimeById } from "../interfaces/anime.interfaces";
+import { 
+    ResponseData, 
+    ResponseDataById
+} from "../../shared/interfaces/global.interfaces";
 
 @Injectable({
     providedIn: 'root'
@@ -12,22 +15,22 @@ export class AnimeService {
     constructor( private http: HttpClient){}
 
     getHttpAllAnime() {
-        return this.http.get<ResponseAnime>(`${this.uriBase}/anime`)
+        return this.http.get<ResponseData>(`${this.uriBase}/anime`)
     }
 
     getHttpAnimePerPage(page: number, name?: string, type?: string){
-        return this.http.get<ResponseAnime>(`${this.uriBase}/anime?page=${page}&q=${name || ''}&type=${type || ''}`)
+        return this.http.get<ResponseData>(`${this.uriBase}/anime?page=${page}&q=${name || ''}&type=${type || ''}`)
     }
 
     getHttpAnimePerName(name: string){
-        return this.http.get<ResponseAnime>(`${this.uriBase}/anime?q=${name}`)
+        return this.http.get<ResponseData>(`${this.uriBase}/anime?q=${name}`)
     }
 
     getHttpAnimePerType(type: string, name?: string){
-        return this.http.get<ResponseAnime>(`${this.uriBase}/anime?type=${type}&q=${name || ''}`)
+        return this.http.get<ResponseData>(`${this.uriBase}/anime?type=${type}&q=${name || ''}`)
     }
 
     getHttpAnimeById(id: number){
-        return this.http.get<ResponseAnimeById>(`${this.uriBase}/anime/${id}/full`)
+        return this.http.get<ResponseDataById>(`${this.uriBase}/anime/${id}/full`)
     }
 }
