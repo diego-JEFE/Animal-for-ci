@@ -8,11 +8,11 @@
             (onSearch)="onSearchAnime($event)"
         ></shared-menu>
         <card-list
-            module="anime"
+            module="manga"
             class="flex w-full"
             [nameFilter]="'Type'"
             [filter]="type" 
-            [cardList]="animeList"
+            [cardList]="magaList"
             [buttonCancel]="cancelFilter"
             (cancelFilter)="onCancelSearch()"
         ></card-list>
@@ -25,4 +25,5 @@
         ></shared-pagination>
     </footer>
 </div>
+
 

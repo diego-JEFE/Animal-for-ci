@@ -8,7 +8,7 @@ const routes: Routes = [
     },
     {
         path: 'manga',
-        loadChildren: ()=> import('./anime/anime.module').then(m => m.AnimeModule)
+        loadChildren: ()=> import('./manga/manga.module').then(m => m.MangaModule)
     },
     {
         path: '**',

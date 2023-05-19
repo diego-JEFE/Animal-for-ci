@@ -4,7 +4,6 @@ import { MainPageComponent } from "./pages/main-page/main-page.component";
 import { TypesPageComponent } from "./pages/types-page/types-page.component";
 import { AnimePageComponent } from "./pages/anime-page/anime-page.component";
 
-
 const routes: Routes = [
     {
         path: '',

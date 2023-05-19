@@ -1,18 +1,18 @@
 <shared-loading *ngIf="isLoading"></shared-loading>
 <div *ngIf="!isLoading" class="bg-zinc-900 transition-all">
     <shared-header></shared-header>
-    <main >
+    <main>
         <shared-menu
             [searchPlaceholder]="'Search Anime'"
             [itemMenu]="itemMenu" 
             (onSearch)="onSearchAnime($event)"
         ></shared-menu>
         <card-list
-            module="anime"
+            module="manga"
             class="flex w-full" 
             nameFilter="Searched"
             [filter]="nameSearch"
-            [cardList]="animeList"
+            [cardList]="mangaList"
             [buttonCancel]="true"
             (cancelFilter)="onCancelSearch()"    
         ></card-list> 

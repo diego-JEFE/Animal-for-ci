@@ -1,9 +1,10 @@
 <span
-    class="w-full text-center text-white p-2 rounded-md"
+    class="w-full text-center text-white p-2 rounded-md font-semibold"
     [ngClass]="{
-        'bg-green-500':  item.status.includes('Currently'),
-        'bg-red-500'  :  item.status.includes('Finished') , 
-        'bg-blue-500' :  item.status.includes('airing'),
-        'bg-white'    :  item.status.includes('Not yet')
+        'bg-green-500'           :  item.status.includes('Currently'),
+        'bg-red-500'             :  item.status.includes('Finished') , 
+        'bg-blue-500'            :  item.status.includes('airing'),
+        'bg-white text-black'    :  item.status.includes('Not yet'),
+        'bg-yellow-500'            :  item.status.includes('Publishing')
     }"
 >{{  item.status }}</span>

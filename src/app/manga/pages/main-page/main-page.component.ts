@@ -1,36 +1,42 @@
 import { Component, OnInit } from '@angular/core';
-import { AnimeService } from '../../services/anime.service';
-import { Data, Genre, ResponseData } from '../../../shared/interfaces/global.interfaces';
-import { ItemMenu } from '../../../shared/interfaces/item-menu.interfaces';
+
+import { ItemMenu } from 'src/app/shared/interfaces/item-menu.interfaces';
+
 import { menuItems } from '../../config/menuItems';
+import { Genre, ResponseData, Data } from 'src/app/shared/interfaces/global.interfaces';
+
+import { MangaService } from '../../services/manga.service';
 
 @Component({
-  selector: 'anime-main-page',
+  selector: 'main-page',
   templateUrl: './main-page.component.html',
+  styles: [
+  ]
 })
 export class MainPageComponent implements OnInit {
-  public animeList: Data[] = []
+
+  public mangaList: Data[] = []
   public genres : Genre[] = [] 
   public nameSearch: string | undefined
   public currentPage = 0
   public totalPages = 0
   public isLoading = true
 
-  constructor( private animeService: AnimeService){}
+  constructor(private mangaService: MangaService ){}
 
   ngOnInit(): void {
-    this.getAllAnimes()
-  } 
+    this.getAllMangas()
+  }
 
-  get itemMenu (): ItemMenu[]{
+  get itemMenu(): ItemMenu[] {
     return menuItems
   }
 
-  getAllAnimes(){
-    this.animeService
-    .getHttpAllAnime()
+  getAllMangas(){
+    this.mangaService
+    .getHttpAllManga()
     .subscribe(({ data, pagination }: ResponseData) =>{
-      this.updateAnimeInfo(
+      this.updateMangaInfo(
         data,
         pagination.current_page,
         pagination.last_visible_page
@@ -38,9 +44,9 @@ export class MainPageComponent implements OnInit {
       this.isLoading = false
     })
   }
-  
-  updateAnimeInfo(animeList: Data[], currentPage: number, totalPages: number){
-    this.animeList = animeList
+
+  updateMangaInfo(mangaList: Data[], currentPage: number, totalPages: number){
+    this.mangaList = mangaList
     this.currentPage = currentPage
     this.totalPages = totalPages
   }
@@ -48,10 +54,10 @@ export class MainPageComponent implements OnInit {
   onSearchAnime(name: string){
     if(name.length < 1) return
     this.nameSearch = name
-    this.animeService
-      .getHttpAnimePerName(this.nameSearch)
+    this.mangaService
+      .getHttpMangaPerName(this.nameSearch)
       .subscribe(({  data, pagination }: ResponseData) =>{
-        this.updateAnimeInfo(
+        this.updateMangaInfo(
           data,
           pagination.current_page,
           pagination.last_visible_page
@@ -66,10 +72,10 @@ export class MainPageComponent implements OnInit {
 
   onChangePageEmmiter(page: number){
     this.currentPage = page
-    this.animeService
-      .getHttpAnimePerPage(this.currentPage, this.nameSearch || '')
+    this.mangaService
+      .getHttpMangaPerPage(this.currentPage, this.nameSearch || '')
       .subscribe(({ data }) =>
-        this.animeList = data
+        this.mangaList = data
     )
   }
 }

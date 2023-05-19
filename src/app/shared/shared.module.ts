@@ -3,48 +3,51 @@ import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 
 import { 
-  NavbarComponent, 
+  AsignTagComponent, 
+  CardItemComponent ,
+  CardListComponent ,
+  GenreListTagComponent,
   HeaderComponent,
   LazyImageComponent,
-  PaginationComponent,
+  LoadingComponent,
   MenuComponent,
-  SearchboxComponent, 
   MenuItemComponent ,
-  CardListComponent ,
-  CardItemComponent ,
+  NavbarComponent, 
+  PaginationComponent,
+  SearchboxComponent, 
   StatusTagComponent ,
-  AsignTagComponent, 
-  GenreListTagComponent,
 } from './components'
 
 @NgModule({
   declarations: [
-    NavbarComponent,
+    AsignTagComponent,
+    CardItemComponent,
+    CardListComponent,
+    GenreListTagComponent,
     HeaderComponent,
     LazyImageComponent,
-    PaginationComponent,
+    LoadingComponent,
     MenuComponent,
-    SearchboxComponent,
     MenuItemComponent,
-    CardListComponent,
-    CardItemComponent,
+    NavbarComponent,
+    PaginationComponent,
+    SearchboxComponent,
     StatusTagComponent,
-    AsignTagComponent,
-    GenreListTagComponent
   ],
   imports: [
     CommonModule,
     RouterModule
   ],
   exports: [
+    AsignTagComponent,
+    CardListComponent,
+    GenreListTagComponent,
     HeaderComponent,
     LazyImageComponent,
-    PaginationComponent,
+    LoadingComponent,
     MenuComponent,
-    CardListComponent,
+    PaginationComponent,
     StatusTagComponent,
-    AsignTagComponent,
-    GenreListTagComponent
   ]
 })
 export class SharedModule { }

@@ -1,37 +1,39 @@
 <shared-loading *ngIf="isLoading"></shared-loading>
 <div *ngIf="!isLoading">
     <shared-header></shared-header>
-    <main class="flex flex-col md:flex-row gap-10 m-5 md:m-10">
+    <main *ngIf="!isLoading" class="flex flex-col md:flex-row gap-10 m-5 md:m-10">
         <section class="w-full md:w-1/4 flex flex-col gap-5">
             <shared-lazy-image
                 [width]="500" 
-                [url]="anime.images['webp'].large_image_url" 
-                [alt]="anime.title" 
+                [url]="manga.images['webp'].large_image_url" 
+                [alt]="manga.title" 
             ></shared-lazy-image>
             <shared-status-tag 
                 class="w-full  flex"
-                [item]="anime"
+                [item]="manga"
             ></shared-status-tag>
             <div class="flex flex-col gap-2">   
-                <shared-asign-tag 
+                <shared-asign-tag
+                    *ngIf="manga.type" 
                     class="w-full flex" 
                     key="Type" 
-                    [value]="anime.type"
+                    [value]="manga.type"
                 ></shared-asign-tag>
                 <shared-asign-tag 
+                    *ngIf="manga.episodes" 
                     class="w-full flex" 
                     key="Episodes" 
-                    [value]="anime.episodes"
+                    [value]="manga.episodes"
                 ></shared-asign-tag>
             </div>
         </section> 
         <section class="w-full flex flex-col gap-5 bg-zinc-800 p-10 rounded-md">
             <h1 class="text-white text-xl font-semibold">
-                {{ anime.title }} 
+                {{ manga.title }} 
             </h1>
             <hr class="border-zinc-700">
-            <genre-list-tag [genres]="anime.genres"></genre-list-tag>
-            <p class="text-white"> {{ anime.synopsis }} </p>
+            <genre-list-tag [genres]="manga.genres"></genre-list-tag>
+            <p class="text-white"> {{ manga.synopsis }} </p>
         </section>
     </main>
 </div>

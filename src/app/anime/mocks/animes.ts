@@ -1,6 +1,6 @@
-import { ResponseAnime } from "../../shared/interfaces/global.interfaces";
+import { ResponseData } from "../../shared/interfaces/global.interfaces";
 
-export const animes : ResponseAnime = {
+export const animes : ResponseData = {
     "pagination": {
       "last_visible_page": 979,
       "has_next_page": true,

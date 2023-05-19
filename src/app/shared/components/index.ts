@@ -4,6 +4,7 @@ export { CardListComponent } from './card-list/card-list.component'
 export { GenreListTagComponent } from './genre-list-tag/genre-list-tag.component'
 export { HeaderComponent } from './header/header.component'
 export { LazyImageComponent } from './lazy-image/lazy-image.component'
+export { LoadingComponent } from './loading/loading-page.component'
 export { MenuComponent } from './menu/menu.component'
 export { MenuItemComponent } from './menu/components/menu-item/menu-item.component';
 export { NavbarComponent  } from './navbar/navbar.component'

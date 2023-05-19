@@ -7,12 +7,11 @@ import { Data } from '../../../shared/interfaces/global.interfaces';
 @Component({
   selector: 'app-anime-page',
   templateUrl: './anime-page.component.html',
-  styles: [
-  ]
 })
 export class AnimePageComponent implements OnInit{
-
+  public isLoading = true
   public anime!: Data
+
   constructor(
     private activatedRoute: ActivatedRoute,
     private animeService:AnimeService
@@ -25,6 +24,7 @@ export class AnimePageComponent implements OnInit{
       )
       ).subscribe(( { data } )=> {
           this.anime = data
+          this.isLoading = false
       })
   }
 

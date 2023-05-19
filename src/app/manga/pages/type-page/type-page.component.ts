@@ -1,31 +1,29 @@
+import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { Component, OnInit } from '@angular/core';
-import { switchMap ,} from 'rxjs';
-
-import { Data, ResponseData } from '../../../shared/interfaces/global.interfaces';
-import { ItemMenu } from '../../../shared/interfaces/item-menu.interfaces';
-
+import { ItemMenu } from 'src/app/shared/interfaces/item-menu.interfaces';
 import { menuItems } from '../../config/menuItems';
-import { AnimeService } from '../../services/anime.service';
+import { switchMap } from 'rxjs';
+import { MangaService } from '../../services/manga.service';
+import { Data, ResponseData } from 'src/app/shared/interfaces/global.interfaces';
 
 @Component({
-  selector: 'anime-types-page',
-  templateUrl: './types-page.component.html',
+  selector: 'type-page',
+  templateUrl: './type-page.component.html',
+  styles: [
+  ]
 })
-
-export class TypesPageComponent implements OnInit {
-    
+export class TypePageComponent {
   public type!: string
   public nameSearch: string | undefined
-  public animeList: Data[] = []
+  public magaList: Data[] = []
   public cancelFilter: boolean = false
   public currentPage = 0
-  public totalPages = 0 
+  public totalPages = 0
   public isLoading = true
 
   constructor(
     private activeRoute: ActivatedRoute,
-    private animeService: AnimeService
+    private mangaService: MangaService
     
   ){}
 
@@ -40,7 +38,7 @@ export class TypesPageComponent implements OnInit {
   getAnimesPerType(){
     this.activeRoute.params
       .pipe(
-        switchMap(({ type })=>  this.animeService.getHttpAnimePerType(type))
+        switchMap(({ type })=>  this.mangaService.getHttpMangaPerType(type))
       )
       .subscribe( ( { data, pagination })  =>{
         this.updateAnimeInfo(
@@ -53,8 +51,8 @@ export class TypesPageComponent implements OnInit {
       })
   }
 
-  updateAnimeInfo(animeList: Data[], currentPage: number, totalPages: number, type?: string){
-    this.animeList = animeList
+  updateAnimeInfo(magaList: Data[], currentPage: number, totalPages: number, type?: string){
+    this.magaList = magaList
     this.currentPage = currentPage
     this.totalPages = totalPages
     this.type = type || this.type
@@ -63,8 +61,8 @@ export class TypesPageComponent implements OnInit {
   onSearchAnime(name: string){
     if(name.length < 1) return
     this.nameSearch = name
-    this.animeService
-      .getHttpAnimePerType(this.type, this.nameSearch)
+    this.mangaService
+      .getHttpMangaPerType(this.type, this.nameSearch)
       .subscribe(({ data, pagination }: ResponseData) =>{
         this.updateAnimeInfo(
           data,
@@ -83,8 +81,8 @@ export class TypesPageComponent implements OnInit {
 
   onChangePageEmmiter(page: number){
     this.currentPage = page
-    this.animeService
-      .getHttpAnimePerPage(this.currentPage, '', this.type)
+    this.mangaService
+      .getHttpMangaPerPage(this.currentPage, '', this.type)
       .subscribe(({ data }) =>
         this.updateAnimeInfo(
           data,

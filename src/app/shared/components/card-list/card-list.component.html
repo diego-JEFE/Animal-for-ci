@@ -1,11 +1,11 @@
-<div class="mx-3 w-full md:mx-20 my-10 " >
+<div class="mx-2 w-full md:mx-20 my-10 " >
     <h2 *ngIf="filter" class="my-5 text-xl text-white font-semibold flex justify-between ">
         {{ nameFilter }}: {{ filter }}
         <button *ngIf="buttonCancel" (click)="onCancelFilter()" class="p-2 bg-zinc-700 rounded-md" >
             <img width="20" src="assets/close.svg" alt="closeIcon" />
         </button>
     </h2>
-    <div class="flex justify-between flex-wrap">
+    <div class="flex gap-5 justify-center flex-wrap">
         <div 
             *ngIf="cardList.length < 1; else animes" 
             class="flex justify-center items-center w-full "
@@ -16,9 +16,10 @@
         </div> 
         <ng-template #animes>
             <card-item 
-            #cardList
-            *ngFor="let item of cardList"
-            [item]="item"
+                #cardList
+                *ngFor="let item of cardList"
+                [item]="item"
+                [baseModule]="module"
             ></card-item>
         </ng-template>
     </div>

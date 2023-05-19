@@ -7,4 +7,5 @@ import { Data } from '../../interfaces/global.interfaces';
 })
 export class CardItemComponent {
   @Input() item! : Data
+  @Input() baseModule! : string
 }

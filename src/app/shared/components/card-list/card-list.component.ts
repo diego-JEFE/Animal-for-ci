@@ -9,6 +9,7 @@ import { Data } from '../../interfaces/global.interfaces';
   ]
 })
 export class CardListComponent {
+  @Input() module!: string
   @Input() filter : string | undefined
   @Input() nameFilter : string | undefined
   @Input() cardList: Data[] = []
