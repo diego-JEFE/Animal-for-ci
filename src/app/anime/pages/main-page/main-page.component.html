@@ -6,14 +6,14 @@
             [itemMenu]="itemMenu" 
             (onSearch)="onSearchAnime($event)"
         ></shared-menu>
-        <anime-list
+        <card-list
             class="flex w-full" 
             nameFilter="Searched"
             [filter]="nameSearch"
-            [animeList]="animeList"
+            [cardList]="animeList"
             [buttonCancel]="true"
             (cancelFilter)="onCancelSearch()"    
-        ></anime-list> 
+        ></card-list> 
     </main>
     <footer class="w-full p-10 flex flex-col items-center gap-5">
         <shared-pagination 
@@ -21,6 +21,5 @@
             [currentPage]="currentPage" 
             [totalPages]="totalPages"
         ></shared-pagination>
-        <span class="text-white">  Diego Polo R. &copy;2023 </span>
     </footer>
 </div>

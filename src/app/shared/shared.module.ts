@@ -8,6 +8,8 @@ import { PaginationComponent } from './pagination/pagination.component';
 import { MenuComponent } from './menu/menu.component';
 import { SearchboxComponent } from './searchbox/searchbox.component';
 import { MenuItemComponent } from './menu/components/menu-item/menu-item.component';
+import { CardListComponent } from './card-list/card-list.component';
+import { CardItemComponent } from './card-item/card-item.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +19,9 @@ import { MenuItemComponent } from './menu/components/menu-item/menu-item.compone
     PaginationComponent,
     MenuComponent,
     SearchboxComponent,
-    MenuItemComponent
+    MenuItemComponent,
+    CardListComponent,
+    CardItemComponent
   ],
   imports: [
     CommonModule,
@@ -27,7 +31,8 @@ import { MenuItemComponent } from './menu/components/menu-item/menu-item.compone
     HeaderComponent,
     LazyImageComponent,
     PaginationComponent,
-    MenuComponent
+    MenuComponent,
+    CardListComponent
   ]
 })
 export class SharedModule { }

@@ -1,8 +1,6 @@
 import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
-import { ResponseAnime } from "../interfaces/anime.interfaces";
-import { ResposeGenres } from "../interfaces/genres.interfaces";
-import { ItemMenu } from "../interfaces/item-menu.interfaces";
+import { ResponseAnime, ResponseAnimeById } from "../interfaces/anime.interfaces";
 
 @Injectable({
     providedIn: 'root'
@@ -29,4 +27,7 @@ export class AnimeService {
         return this.http.get<ResponseAnime>(`${this.uriBase}/anime?type=${type}&q=${name || ''}`)
     }
 
+    getHttpAnimeById(id: number){
+        return this.http.get<ResponseAnimeById>(`${this.uriBase}/anime/${id}/full`)
+    }
 }

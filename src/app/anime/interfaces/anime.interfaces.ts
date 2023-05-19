@@ -3,6 +3,10 @@ export interface ResponseAnime {
     data:       Anime[];
 }
 
+export interface ResponseAnimeById {
+    data:       Anime;
+}
+
 export interface Anime {
     mal_id:          number;
     url:             string;

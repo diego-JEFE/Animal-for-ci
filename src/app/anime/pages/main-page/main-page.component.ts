@@ -19,19 +19,23 @@ export class MainPageComponent implements OnInit {
   constructor( private animeService: AnimeService){}
 
   ngOnInit(): void {
-    this.animeService
-      .getHttpAllAnime()
-      .subscribe(({ data, pagination }: ResponseAnime) =>{
-        this.updateAnimeInfo(
-          data,
-          pagination.current_page,
-          pagination.last_visible_page
-        )
-      })
+    this.getAllAnimes()
   } 
 
   get itemMenu (): ItemMenu[]{
     return menuItems
+  }
+
+  getAllAnimes(){
+    this.animeService
+    .getHttpAllAnime()
+    .subscribe(({ data, pagination }: ResponseAnime) =>{
+      this.updateAnimeInfo(
+        data,
+        pagination.current_page,
+        pagination.last_visible_page
+      )
+    })
   }
   
   updateAnimeInfo(animeList: Anime[], currentPage: number, totalPages: number){

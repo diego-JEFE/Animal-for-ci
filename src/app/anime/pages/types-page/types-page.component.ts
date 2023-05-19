@@ -8,10 +8,19 @@ import { AnimeService } from '../../services/anime.service';
 import { menuItems } from '../../mocks/menuItems';
 import { ItemMenu } from '../../interfaces/item-menu.interfaces';
 
+
+interface animeStorage {
+  currentPage: number;
+  nameSearch: string | undefined;
+  type: string;
+}
+
+
 @Component({
   selector: 'anime-types-page',
   templateUrl: './types-page.component.html',
 })
+
 export class TypesPageComponent implements OnInit {
     
   public type!: string
@@ -28,26 +37,45 @@ export class TypesPageComponent implements OnInit {
   ){}
 
   ngOnInit(): void {
-    this.activeRoute.params
-    .pipe(
-      switchMap(({ type })=>  this.animeService.getHttpAnimePerType(type))
-    )
-    .subscribe( ( { data, pagination })  =>{
-      this.animeList = data
-      this.currentPage = pagination.current_page
-      this.totalPages = pagination.last_visible_page
-      this.type = data[0].type
-    })
+
+    const storage = localStorage.getItem('anime') && JSON.parse(localStorage.getItem('anime')!)
+    console.log(storage)
+    this.getAnimesPerType()
   }
 
   get itemsMenu (): ItemMenu[] {
     return menuItems
   }
 
-  updateAnimeInfo(animeList: Anime[], currentPage: number, totalPages: number){
+  getAnimesPerType(){
+    this.activeRoute.params
+      .pipe(
+        switchMap(({ type })=>  this.animeService.getHttpAnimePerType(type))
+      )
+      .subscribe( ( { data, pagination })  =>{
+        this.updateAnimeInfo(
+          data,
+          pagination.current_page,
+          pagination.last_visible_page,
+          data[0].type
+        )
+
+      })
+  }
+
+  updateAnimeInfo(animeList: Anime[], currentPage: number, totalPages: number, type?: string){
     this.animeList = animeList
     this.currentPage = currentPage
     this.totalPages = totalPages
+    this.type = type || this.type
+
+    const animeStorage: animeStorage = {
+      currentPage: this.currentPage,
+      nameSearch: this.nameSearch,
+      type: this.type
+    }
+
+    localStorage.setItem('anime', JSON.stringify(animeStorage))
   }
 
   onSearchAnime(name: string){
@@ -76,7 +104,11 @@ export class TypesPageComponent implements OnInit {
     this.animeService
       .getHttpAnimePerPage(this.currentPage, '', this.type)
       .subscribe(({ data }) =>
-        this.animeList = data
+        this.updateAnimeInfo(
+          data,
+          this.currentPage,
+          this.totalPages
+        ) 
     )
   }
 }

@@ -7,19 +7,19 @@
     </h2>
     <div class="flex justify-between flex-wrap">
         <div 
-            *ngIf="animeList.length < 1; else animes" 
+            *ngIf="cardList.length < 1; else animes" 
             class="flex justify-center items-center w-full "
         >
             <h2 class="rounded-lg w-1/2 text-md text-center font-semibold text-white p-5 bg-zinc-700">
-                No hay elementos para mostrar
+                There aren't items to display
             </h2>
         </div> 
         <ng-template #animes>
-            <anime-card 
+            <card-item 
             #cardList
-            *ngFor="let item of animeList"
+            *ngFor="let item of cardList"
             [item]="item"
-            ></anime-card>
+            ></card-item>
         </ng-template>
     </div>
 </div>

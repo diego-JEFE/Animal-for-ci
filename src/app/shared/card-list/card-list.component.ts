@@ -1,16 +1,16 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { Anime } from '../../interfaces/anime.interfaces';
+import { Anime } from '../../anime/interfaces/anime.interfaces';
 
 @Component({
-  selector: 'anime-list',
-  templateUrl: './anime-list.component.html',
+  selector: 'card-list',
+  templateUrl: './card-list.component.html',
   styles: [
   ]
 })
-export class AnimeListComponent {
+export class CardListComponent {
   @Input() filter : string | undefined
   @Input() nameFilter : string | undefined
-  @Input() animeList: Anime[] = []
+  @Input() cardList: Anime[] = []
   @Input() buttonCancel: boolean = false
 
   @Output() cancelFilter = new EventEmitter<boolean>()
