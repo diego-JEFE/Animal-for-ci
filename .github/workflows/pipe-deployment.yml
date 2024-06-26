@@ -19,5 +19,5 @@ jobs:
           port: ${{ secrets.CLEANUP_PORT }}
           first_ssh: |
             cd /var/www/Animal-for-ci
-            git pull
-            yarn build
+            sudo git pull
+            sudo yarn build
