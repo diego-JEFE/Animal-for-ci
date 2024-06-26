@@ -18,6 +18,4 @@ jobs:
           pass: ${{ secrets.CLEANUP_PASS }}
           port: ${{ secrets.CLEANUP_PORT }}
           first_ssh: |
-            cd /var/www/Animal-for-ci
-            sudo git pull
-            yarn build
+            sudo su
