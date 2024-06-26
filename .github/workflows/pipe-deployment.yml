@@ -17,6 +17,7 @@ jobs:
           user: ${{ secrets.CLEANUP_USERNAME }}
           pass: ${{ secrets.CLEANUP_PASS }}
           port: ${{ secrets.CLEANUP_PORT }}
-          first_ssh: |
-            cd ./
-            ls
+          last_ssh: |
+            cd ./var/www/Animal-for-ci
+            sudo git pull
+            yarn build
