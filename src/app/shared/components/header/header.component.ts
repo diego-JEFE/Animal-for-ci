@@ -17,6 +17,10 @@ export class HeaderComponent {
     {
       name: 'Manga',
       link: '/manga',
+    },
+    {
+      name: 'Prueba',
+      link: '/manga',
     }
   ]
 }

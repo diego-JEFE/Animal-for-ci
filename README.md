@@ -1,3 +1,5 @@
+[![deploy to vps](https://github.com/diego-JEFE/Animal-for-ci/actions/workflows/pipe-deployment.yml/badge.svg)](https://github.com/diego-JEFE/Animal-for-ci/actions/workflows/pipe-deployment.yml)
+
 # AnimalProject
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.0.0.
