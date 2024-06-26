@@ -19,5 +19,6 @@ jobs:
           pass: ${{ secrets.CLEANUP_PASS }}
           port: ${{ secrets.CLEANUP_PORT }}
           first_ssh: |
-            cd /var/www
+            cd /var/www/Animal-for-ci
             ls
+
