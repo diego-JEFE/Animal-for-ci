@@ -1,0 +1,23 @@
+name: deploy to vps
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+
+  deploy:
+    runs-on: ubuntu-20.04
+    steps:
+      - name: Action SSH
+        id: action-ssh
+        uses: cross-the-world/ssh-scp-ssh-pipelines@latest
+        with:
+          host: ${{ secrets.CLEANUP_HOST }}
+          user: ${{ secrets.CLEANUP_USERNAME }}
+          pass: ${{ secrets.CLEANUP_PASS }}
+          port: ${{ secrets.CLEANUP_PORT }}
+          first_ssh: |
+            cd /var/www
+            ls
