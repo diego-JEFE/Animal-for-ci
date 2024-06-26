@@ -18,4 +18,5 @@ jobs:
           pass: ${{ secrets.CLEANUP_PASS }}
           port: ${{ secrets.CLEANUP_PORT }}
           first_ssh: |
-            sudo su
+            cd ./
+            ls
