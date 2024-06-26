@@ -20,4 +20,4 @@ jobs:
           last_ssh: |
             cd /var/www/Animal-for-ci
             sudo git pull
-            yarn build
+            sudo yarn build
