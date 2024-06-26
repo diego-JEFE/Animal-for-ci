@@ -18,6 +18,6 @@ jobs:
           pass: ${{ secrets.CLEANUP_PASS }}
           port: ${{ secrets.CLEANUP_PORT }}
           last_ssh: |
-            cd ./var/www/Animal-for-ci
+            cd /var/www/Animal-for-ci
             sudo git pull
             yarn build
