@@ -19,7 +19,7 @@ export class HeaderComponent {
       link: '/manga',
     },
     {
-      name: 'APP',
+      name: 'APPo',
       link: '/manga',
     }
   ]
